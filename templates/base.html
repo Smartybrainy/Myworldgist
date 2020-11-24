@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <!-- FOR THE COOKIEBOT as first script -->
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="de8d01fc-4746-4e0d-9c25-915dd5e528d7"
+    data-blockingmode="true" type="text/javascript">
+    </script>
+
+
+  <!-- Google Adsense -->
+  <script data-ad-client="ca-pub-6922361781329640" async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+    </script>
+  <!-- google adsense ends here -->
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="myworldgist" content="Latest News" />
+  <meta name="Smartybrainy" content="This site was written by Smartybrainy a 
+  computer science student of the national open university of Nigeria" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  <link rel="icon" href="{% static 'fav/favicon.ico' %}">
+
+  <title>Myworldgist {% block title %}{% endblock title %}</title>
+
+  <!-- The below belongs to the share this reactions icons -->
+  <script type='text/javascript'
+    src='https://platform-api.sharethis.com/js/sharethis.js#property=5edd9a5b701431001210de30&product=inline-reaction-buttons&cms=sop'
+    async='async'>
+    </script>
+  <!-- The sticky share ths icon -->
+  <script type='text/javascript'
+    src='https://platform-api.sharethis.com/js/sharethis.js#property=5edd9a5b701431001210de30&product=sticky-share-buttons&cms=sop'
+    async='async'>
+    </script>
+
+  <!-- offline boostrap and jquery -->
+  <link rel="stylesheet" type="text/css" href="{% static 'style-sheet/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'style-sheet/font-awesome/all.min.css' %}">
+
+  {% include 'google_conversion.html' %}
+
+
+  <!-- PushAlert.co -->
+  <script type="text/javascript">
+    (function (d, t) {
+      var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+      g.src = "https://cdn.pushalert.co/integrate_6ead8921a20208e05657c3e85cdc4b8a.js";
+      s.parentNode.insertBefore(g, s);
+    }(document, "script"));
+  </script>
+  <!-- End PushAlert -->
+
+</head>
+
+
+<body style="padding-top: 60px;">
+  {% include 'nav_bar.html' %}
+
+  <div>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+
+  {% block content %}
+  {% endblock content %}
+
+  {% include 'footer.html' %}
+
+  {% include 'scripts.html' %}
+  {% block extra_scripts %}
+  {% endblock extra_scripts %}
+
+</body>
+
+</html>

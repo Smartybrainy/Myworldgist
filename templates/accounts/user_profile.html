@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<title>{% block title %} | Account Profile {% endblock title %}</title>
+<div class="container-fluid p-5 background-gradient">
+  <div class="row">
+
+    <div class="col-md-2"></div>
+
+    <div class="col-md-8 shadow-lg">
+      <div class="content-section border border-light rounded p-3 white responsive">
+        {% if user.profile.image %}
+        <div class="media">
+          <img src="{{ user.profile.image.url }}" alt="Profile-img" class="rounded-circle img-fluid mr-4"
+            id="image-size" />
+          {% endif %}
+          <div class="media-body" style="overflow: auto;">
+            <h4 class="account-heading">User: {{ user.username }}</h4>
+            <h4 class="text-secondary">Gender: {{ user.profile.gender }}</h4>
+            <h5 style="word-wrap: break-word;" class="text-secondary">
+              Email: {{ user.email }}
+            </h5>
+          </div>
+        </div>
+        <br /><br />
+        <!-- Form Here -->
+        <form action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Profile Info</legend>
+            {{ u_form | crispy }}
+            {{ p_form | crispy }}
+          </fieldset>
+          <div class="form-group">
+            <button type="submit" class="btn btn-outline-success">
+              Update
+            </button>
+            <input type="reset" value="Reset" class="btn btn-outline-warning" />
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+{% include 'live_chat.html' %}
+
+{% endblock content %}

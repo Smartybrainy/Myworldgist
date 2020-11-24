@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    iframe {
+        overflow: hidden !important;
+    }
+</style>
+<main>
+    <header style="text-align: center;" class="p-5 search-gradient white">
+        WELCOME TO MY-WORLD-GIST POPULAR VIDEOS
+    </header>
+    <br />
+    <div class="container">
+        <a href="{% url 'player:video-list' %}"><button class="btn btn-primary" title="Click to go back">&laquo;
+                Back</button></a>
+        <a href="/"><button class="btn btn-primary" title="Click to go back">&laquo;
+                Home</button></a>
+    </div>
+    <hr />
+    <div class="container">
+        <div class="row">
+            <div class="col bg-light rounded-lg p-2">
+                <iframe src="{% static 'iframe_img/iframe-defaul.jpg' %}" width="100%" height="350;" name="iframe_video"
+                    scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; encripted-media"
+                    class="rounded-lg">
+                </iframe>
+            </div>
+
+            <div class="col-md-4 ml-3">
+                {% for i_video in video_tube %}
+                <p title="Click the play button">{{ i_video.name }}</p>
+                <h3>
+                    <a href="{{ i_video.url_video }}" target="iframe_video">
+                        <i class="fa fa-play" aria-hidden="true" title="Click to play the video"></i>
+                    </a>
+                </h3>
+                <hr />
+                <br />
+                {% empty %}
+                <div class="container alert alert-info dismissible fade show">No videos uploaded.
+                    <span type="button" class="close" data-dismiss="alert">&times;</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination section -->
+    <div class="container p-2">
+        {% if video_tube.has_other_pages %}
+        <ul class="pagination justify-content-left">
+            {% if video_tube.has_previous %}
+            <li><a href="?page={{ video_tube.previous_page_number }}"><button class="btn btn-outline-primary">&laquo;
+                        Prev</button></a></li>
+            {% endif %}
+
+            {% for i in video_tube.paginator.page_range %}
+            {% if video_tube.number == i %}
+            <li class="page-item"><a class="page-link" href="">{{ i }}</a></li>
+            {% elif i > video_tube.number|add:-1 and i < video_tube.number|add:1 %}
+            <li class="page-item"><a class="page-link" href="">{{ i }}</a></li>
+            {% endif %}
+            {% endfor %}
+
+            {% if video_tube.has_next %}
+            <li><a href="?page={{ video_tube.next_page_number }}"><button class="btn btn-outline-primary">Next
+                        &raquo;</button></a></li>
+            {% endif %}
+        </ul>
+        {% endif %}
+    </div>
+
+</main>
+
+{% include 'live_chat.html' %}
+
+{% endblock content %}

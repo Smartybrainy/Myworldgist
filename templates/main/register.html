@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<title>{% block title %} | Register {% endblock title %}</title>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3"></div>
+
+    <div class="col-md-6 bg-light shadow shadow-lg rounded pt-2 mb-3 mt-3">
+      <div class="container text-center">
+        You Are Welcome To My-Worldgist Please Complete Your Credentials.
+        <p><a href="{% url 'accounts:why-sign-up' %}">Why sign up?</a></p>
+      </div>
+
+      <form action="{% url 'accounts:register' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="First Name:" name="first_name" required autofocus />
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Last Name:" name="last_name" />
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Username:" name="username" required />
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email@gmail.com"
+            name="email" required />
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password:" name="password" required />
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Confirm Password:" name="confirm_password"
+            required />
+
+          <div>
+            <br />
+            <input type="checkbox" name="accept_policy" id="accept_policy">
+            <label for="accept_policy">By signing up, I agree to have read and accepted the
+              <a href="{% url 'blog:policy' %}">terms
+                of use, cookie and privacy policy</a> of <a href="/">myworldgist.com</a>
+            </label>
+          </div>
+        </div>
+
+        <input type="submit" class="btn btn-warning btn-sm" id="submit" name="submit" value="Sign Up" disabled />
+
+        <button type="reset" class="btn btn-outline-primary btn-sm">Reset</button>
+      </form>
+      <br />
+
+      <h5>
+        <a href="{% url 'accounts:login' %}">Already a User: Login</a>
+      </h5>
+      <a href="/" class="btn btn-primary btn-sm">Home page</a>
+      <br /><br />
+
+    </div>
+  </div>
+</div>
+
+{% block extra_scripts %}
+<script type="text/javascript">
+  $(document).ready(function () {
+    var acceptPolicyBtn = document.querySelector("input[name=accept_policy]");
+
+    acceptPolicyBtn.addEventListener('change', function () {
+      if (this.checked) {
+        $(':input[type=submit]').prop({ 'disabled': false });
+        $(":input[type=submit]").removeClass("btn btn-warning btn-sm");
+        $(':input[type=submit]').addClass("btn btn-outline-success btn-sm")
+      } else {
+        $(':input[type=submit]').prop({ 'disabled': true });
+        $(":input[type=submit]").addClass("btn btn-warning btn-sm");
+        $(':input[type=submit]').removeClass("btn btn-outline-success btn-sm")
+      }
+    })
+  })
+
+</script>
+{% endblock extra_scripts %}
+
+{% endblock content %}

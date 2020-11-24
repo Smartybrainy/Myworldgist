@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --text-color: green;
+}
+
+.background:not(footer) {
+  color: var(--text-color);
+  position: relative;
+  position: -webkit-relative;
+}
+.like-count-color {
+  color: green;
+}
+
+/* for the background gradient */
+.search-gradient {
+  background-image: radial-gradient(circle, #5c0067 0%, #00d4ff 100%);
+}
+.background-gradient {
+  background-image: linear-gradient(
+    90deg,
+    #020024 0%,
+    #090979 35%,
+    #056477 100%
+  );
+}
+
+/* for the message that gets print out on register page */
+.white-color {
+  color: #fff;
+  text-align: center;
+}
+
+/* for the user welcome */
+.white {
+  color: #fff;
+}
+
+/* form design section */
+.form-white {
+  color: aliceblue;
+}
+/* for content text */
+.text-content p:first-child {
+  text-indent: 50px;
+}
+
+/* for the footer */
+#footer {
+  background-color: #222;
+  padding: 20px;
+  clear: both;
+  height: auto;
+  width: 100%;
+  color: #efefef;
+}
+#admin-info::after {
+  content: "";
+  display: block;
+  background-color: #efefef;
+  height: 2px;
+  width: 150px;
+}
+#para-footer {
+  padding-top: 48px;
+}
+
+/* for the reaction section */
+.text-green {
+  color: green;
+}
+.text-black {
+  color: black;
+}
+#output-font-family {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+/* for search bar */
+input:focus {
+  background-color: #222;
+  color: white;
+  border: 1px outset white !important;
+  border-radius: 5px;
+}
+
+/* The user profile */
+#image-size {
+  max-width: 70px !important;
+  max-height: 70px !important;
+}
+
+/* ANIMATION FOR MARQUEE */
+#animation {
+  background-color: aquamarine;
+  color: blue;
+  animation: anime 10s linear 2s infinite both;
+}
+@-webkit-keyframes anime {
+  0% {
+    background-color: aquamarine;
+  }
+  25% {
+    background-color: coral;
+  }
+  50% {
+    background-color: brown;
+  }
+  75% {
+    background-color: blueviolet;
+  }
+  100% {
+    background-color: aliceblue;
+  }
+}
+
+@keyframes anime {
+  0% {
+    background-color: aquamarine;
+  }
+  25% {
+    background-color: coral;
+  }
+  50% {
+    background-color: brown;
+  }
+  75% {
+    background-color: blueviolet;
+  }
+  100% {
+    background-color: aliceblue;
+  }
+}
+
+/* THE BASE HTML NAV BAR */
+#sticky {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 2;
+}
+
