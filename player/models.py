@@ -68,7 +68,7 @@ class Music(models.Model):
         })
 
 
-class TrendingVideo(models.Model):
+class TutorialVideo(models.Model):
     title = models.CharField(max_length=50, unique=True)
     slug = models.SlugField(unique=True)
     url_vid = EmbedVideoField()
@@ -80,4 +80,4 @@ class TrendingVideo(models.Model):
         return self.title
 
     class Meta:
-        verbose_name_plural = "Trending Videos"
+        verbose_name_plural = "Tutorial Videos"

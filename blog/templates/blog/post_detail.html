@@ -50,20 +50,24 @@
 
           <!-- the image section -->
           {% if post.image %}
-          <img src="{{ post.image.url }}" alt="Does'nt Exis!" class="img-fluid
-            rounded-lg scale-zoom mx-2 mt-3" />
+          <div style="width: 80%;margin:auto">
+            <img src="{{ post.image.url }}" alt="Does'nt Exis!" class="img-fluid
+                        rounded-lg scale-zoom mt-3" />
+          </div>
           {% endif %}
           <!-- the image section ends here -->
 
-          <!-- THE SHARE THIS SECTION -->
-          <div class="sharethis-inline-reaction-buttons"></div>
-
+          <hr />
+          <br />
+          
+          <div style="height: auto; margin-bottom:30px;display:flex;justify-content:center;" class="scale-zoom">
+            {% video object.url_video 'medium' %}
+          </div>
         </div>
 
-        <div style="height: auto; margin-bottom:30px;display:flex;justify-content:center;" class="scale-zoom">
-          {% video object.url_video 'medium' %}
-        </div>
-
+        <!-- THE SHARE THIS SECTION -->
+        <div class="sharethis-inline-reaction-buttons"></div>
+        
         <!-- the below code belongs to comment -->
         <div class="container">
           {% for comment in post.my_comments.all %}
@@ -75,6 +79,7 @@
             </p>
             <p class="card-text">{{ comment.body | linebreaks | urlizetrunc:30 }}</p>
             <!--safe prevents linebreaks-->
+            
             <!-- the below goes for comment image -->
             {% if comment.comment_img %}
             <img src="{{ comment.comment_img.url }}" alt="Does'nt Exis!"

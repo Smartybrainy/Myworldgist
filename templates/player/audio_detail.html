@@ -19,7 +19,10 @@
             <button type="button" onclick="checkLoop()">Check Loop</button>
             <hr />
           </div>
-          <p>{{ music.desc | linebreaks | urlize }}</p>
+          <p>{{ music.desc | linebreaks | urlize }}
+            <a href="{{ object.audio_file.url }}" download="{{ object.audio_file.url }}">download</a>
+          </p>
+
           <a href="{% url 'player:audio-list' %}"><button class="btn btn-primary" title="Click to go back">&laquo;
               Back</button></a>
         </div>

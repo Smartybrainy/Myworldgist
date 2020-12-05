@@ -1,0 +1,15 @@
+.progress-container {
+  width: 100%;
+  height: 6px;
+  background-color: lightgray;
+  position: fixed;
+  top: 58px !important;
+  right: 0 !important;
+  z-index: 4;
+}
+
+.progress-container #progress_level {
+  background-color: green;
+  height: 6px;
+  width: 1%;
+}

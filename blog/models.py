@@ -20,14 +20,11 @@ SIDEBAR_CHOICE = (
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    # content = models.TextField()
     content = RichTextUploadingField(blank=True, null=True)
     image = models.ImageField(
         upload_to='document/%y/%m/%d/', blank=True, null=True,
         width_field="width_field", height_field="height_field")
-    # url_video = models.CharField(
-    #     max_length=2083, blank=True, null=True)
-    url_video = EmbedVideoField(blank=True, null=True)
+    url_video = EmbedVideoField(max_length=2083, blank=True, null=True)
     height_field = models.IntegerField(default=0)
     width_field = models.IntegerField(default=0)
     author = models.ForeignKey(

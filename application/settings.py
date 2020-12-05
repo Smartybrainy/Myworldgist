@@ -17,6 +17,7 @@ DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 # DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['domain.com, www.domain.com']
 
 
 # Application definition
@@ -52,11 +53,6 @@ THIRD_PARTY_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'embed_video',
-
-    # 'allauth',
-    # 'allauth.account',
-    # 'allauth.socialaccount',
-    # 'allauth.socialaccount.providers.facebook',
 ]
 CKEDITOR_UPLOAD_PATH = "document/"
 CKEDITOR_CONFIGS = {
@@ -105,7 +101,10 @@ TEMPLATES = [
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
 
+                # 'whitenoise.middleware.WhiteNoiseMiddleware',
+                # 'django.middleware.locale.LocaleMiddleware',
                 'django.template.context_processors.media',
+                # 'application.middleware.ImageField404Middleware',
             ],
         },
     },
@@ -113,8 +112,6 @@ TEMPLATES = [
 # Below is also for the social login auth
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.facebook.FacebookOAuth2',
-    # 'social_core.backends.twitter.TwitterOAuth',
-    # 'social_core.backends.github.GithubOAuth2',
     'social_core.backends.google.GoogleOAuth2',
 
     'django.contrib.auth.backends.ModelBackend',
@@ -187,6 +184,7 @@ MEDIA_URL = '/media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')

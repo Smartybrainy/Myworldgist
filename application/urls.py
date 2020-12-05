@@ -5,6 +5,8 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.views.generic.base import RedirectView
+from django.conf.urls import url
+from django.views.static import serve
 
 
 urlpatterns = [
@@ -25,8 +27,10 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     # For the social login
     path('oauth/', include('social_django.urls', namespace="social")),
-    # path('accounts/', include('allauth.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+
+    url(r'^download/(?P<path>.*)$', serve,
+        {'document_root': settings.MEDIA_ROOT}),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,

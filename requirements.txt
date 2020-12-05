@@ -25,6 +25,7 @@ cryptography==2.9
 cycler==0.10.0
 defusedxml==0.7.0rc1
 distlib==0.3.0
+dj-static==0.0.6
 Django==3.0.5
 django-celery==3.3.1
 django-ckeditor==6.0.0
@@ -61,7 +62,6 @@ pbr==5.4.5
 pefile==2019.4.18
 Pillow==7.1.1
 protobuf==3.6.1
-psycopg2==2.8.6
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycodestyle==2.5.0
@@ -89,6 +89,7 @@ social-auth-app-django==4.0.0
 social-auth-core==3.3.3
 soup==0.1.0
 sqlparse==0.3.1
+static3==0.7.0
 stevedore==1.32.0
 txaio==20.4.1
 urllib3==1.25.8

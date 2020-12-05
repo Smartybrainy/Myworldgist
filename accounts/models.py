@@ -25,8 +25,8 @@ class Profile(models.Model):
     class Meta:
         verbose_name_plural = "User Profiles"
 
-    # def save(self):  # THIS WORKS WHEN IMAGE IS SAVING FROM LOCAL-FILE SYSTEM
-        # return super().save()
+    # def save(self, *args, **kwargs):  # THIS WORKS WHEN IMAGE IS SAVING FROM LOCAL-FILE SYSTEM
+        # return super(Profile, self).save()
 
         # img = Image.open(self.image.path)
         # if img.height > 300 or img.width > 300:

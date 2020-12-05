@@ -300,19 +300,36 @@
                     </a>
                 </div>
 
-                <!-- For amazon recommendations -->
-                <div class="col-lg-6">
-                    <div id="amzn-assoc-ad-21123a9b-1660-419e-b658-47c068d57b96"></div>
-                    <script async
-                        src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=21123a9b-1660-419e-b658-47c068d57b96">
-                        </script>
-
-                </div>
-                <!-- amazon recommendations end -->
-
             </div>
     </section>
     <hr />
+    
+
+    <!-- For the modal -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Subscribe our Newsletter</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Subscribe to our mailing list to get the latest updates straight in your inbox.</p>
+                    <form action="email/" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="username" class="form-control" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Email Address">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end for the modal -->
+
 
     <!-- start first row -->
     <div class="container">
@@ -340,10 +357,10 @@
             </div>
 
             <div class="col-lg-3 col-sm-6 my-2 p-3 shadow-lg">
-                <a href="/player/trending-vid/" id="home-icon-links" class="youtube" title="Go to trending videos"><i
+                <a href="/player/tutorial-vid/" id="home-icon-links" class="youtube" title="Go to trending videos"><i
                         class="fab fa-youtube fa-8x"></i>
                 </a>
-                <h4 id="home-icon-text">Trending Videos</h4>
+                <h4 id="home-icon-text">Tutorial Videos</h4>
             </div>
 
         </div>
@@ -359,7 +376,7 @@
                 <a href="/player/video/popular/" id="home-icon-links" class="home-icons" title="Not ready!"><i
                         class="fas fa-video fa-8x"></i>
                 </a>
-                <h4 id="home-icon-text">Music Videos</h4>
+                <h4 id="home-icon-text">Trending Videos</h4>
             </div>
 
             {% if user.is_authenticated %}
@@ -441,6 +458,15 @@
         };
     });
 
+
+    // For the modal
+    $(document).ready(function () {
+        var delayMs = 25000
+        setTimeout(() =>{
+            $("#myModal").modal('show');
+        }, delayMs)
+    });
+
 </script>
 {% endblock extra_scripts %}
 
@@ -449,3 +475,4 @@
 <script src="{% static 'amazon_store/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
 {% endblock content %}
+

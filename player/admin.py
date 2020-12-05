@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import (Video,
                      Music,
                      PopularVideo,
-                     TrendingVideo
+                     TutorialVideo
                      )
 from embed_video.admin import AdminVideoMixin
 
@@ -30,9 +30,9 @@ class PopularVideoAdmin(admin.ModelAdmin):
     list_filter = ('status',)
 
 
-@admin.register(TrendingVideo)
-class TrendingVideoAdmin(AdminVideoMixin, admin.ModelAdmin):
-    list_display = ('title', 'description', 'url_vid')
+@admin.register(TutorialVideo)
+class TutorialVideoAdmin(AdminVideoMixin, admin.ModelAdmin):
+    list_display = ('title', 'url_vid')
     list_display_links = ('url_vid',)
     list_filter = ['status']
     search_fields = ['title']

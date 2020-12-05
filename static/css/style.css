@@ -54,16 +54,17 @@
   background-color: #222;
   padding: 20px;
   clear: both;
-  height: auto;
+  height: max-content;
   width: 100%;
   color: #efefef;
 }
+
 #admin-info::after {
   content: "";
   display: block;
   background-color: #efefef;
   height: 2px;
-  width: 150px;
+  width: 240px;
 }
 #para-footer {
   padding-top: 48px;
@@ -136,12 +137,3 @@ input:focus {
     background-color: aliceblue;
   }
 }
-
-/* THE BASE HTML NAV BAR */
-#sticky {
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
-  z-index: 2;
-}
-

@@ -1,16 +1,15 @@
 {% extends 'base.html' %}
-{% load url_target_blank  %}
 
+{% load url_target_blank  %}
 {% load embed_video_tags %}
+{% load static %}
 
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %} | Advert page{% endblock title %}</title>
+  <title>{% block title %} | Blog post{% endblock title %}</title>
   {% include 'google_conversion.html' %}
   <!-- For FB Oauth -->
   <script>
@@ -34,10 +33,29 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
   </script>
+  
   <style>
     .scale-zoom:hover {
       transform: scale(1.2, 1.2);
       transition: all 2s ease-out;
+    }
+
+    input[type=search] {
+      width: 140px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      background-color: white;
+      background-image: url('{% static "fav/search2.png" %}');
+      background-position: 12px 16px; 
+      background-repeat: no-repeat;
+      padding: 12px 20px 12px 40px;
+      -webkit-transition: width 0.4s ease-in-out;
+      transition: width 0.4s ease-in-out;
+    }
+    input[type=search]:focus{
+      width: 100%;
     }
   </style>
 </head>
@@ -83,7 +101,7 @@
         <div class="card h-100 my-3 mb-5">
 
           <div class="card-body">
-            <h5 class="card-title border border-light text-primary">
+            <h5 class="card-title border-bottom border-secondary p-1 text-primary">
               <a href="{% url 'blog:post-detail' slug=post.slug %}"
                 title="Click to read more about the post">{{ post.title }}</a>
             </h5>
@@ -93,18 +111,17 @@
 
             {{ post.content|safe| slice:":100" |url_target_blank }}&raquo;
 
-            {% if post.image %}
-            <img src="{{ post.image.url }}" alt="Does'nt Exis!" class="img-fluid rounded-lg scale-zoom mx-2" />
-            <br><br>
+            {% if post.url_video %}
+            <div style="height: auto; margin-bottom:30px;display:flex;justify-content:center;" class="scale-zoom">
+              {% video post.url_video '180 x 120' %}
+            </div>
+            {% elif post.image %}
+            <div style="width: 80%;margin:auto;">
+              <img src="{{ post.image.url }}" alt="Does'nt Exis!" class="img-fluid rounded-lg scale-zoom"/>
+            </div>
+            <br />
             <hr>
             {% endif %}
-
-            <a href=""></a>
-
-
-            <div style="height: auto; margin-bottom:30px;display:flex;justify-content:center;" class="scale-zoom">
-              {% video post.url_video '200 x 120' %}
-            </div>
 
             <a href="{{ post.get_absolute_url }}" class="btn btn-info
             btn-sm">Read more</a>
@@ -115,7 +132,6 @@
             </a>
 
             <div class="sharethis-inline-share-buttons"></div>
-
           </div>
 
         </div>
@@ -123,14 +139,13 @@
         <hr style="background-color: skyblue;" />
 
       </div>
-
       {% empty %}
       <h3>No Available Here.</h3>
       {% endfor %}
 
     </div>
   </div>
-  <br><br><br>
+  <br><br>
 
 
   <div class="container">

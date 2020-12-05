@@ -1,0 +1,24 @@
+{% load static %}
+
+<head>
+<link rel="stylesheet" href="{% static 'css/progress_bar.css' %}">
+</head>
+<body>
+    <div class="progress-container">
+        <div id="progress_level"></div>
+    </div>
+</body>
+
+<script>
+    window.onscroll = () =>{
+        scrollFunc()
+    }
+
+    var scrollFunc = () => {
+        var winScroll =  document.body.scrollTop || document.documentElement.scrollTop;
+        var height =  document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100 + "%";
+        document.getElementById('progress_level').style.width = scrolled;
+    }
+</script>
+</html>

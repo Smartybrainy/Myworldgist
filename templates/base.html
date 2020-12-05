@@ -59,8 +59,12 @@
 </head>
 
 
-<body style="padding-top: 60px;">
-  {% include 'nav_bar.html' %}
+<body>
+  <header>
+    {% include 'nav_bar.html' %}
+  </header>
+  
+  {% include 'utilities/progress_bar.html' %}
 
   <div>
     {% if messages %}
